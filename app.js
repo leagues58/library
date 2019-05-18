@@ -1,13 +1,17 @@
 var express = require('express');
+var chalk = require('chalk');
+var debug = require('debug')('app');
+var morgan = require('morgan');
 
 var app = express();
 
+app.use(morgan('tiny'));
+
 app.get('/', function(req, res){
-    console.log('get request');
     res.send('the library says hi');
 });
 
 
 app.listen(3000, function(){
-    console.log('listening on port 3000');
+    debug(`listening on port ${chalk.green('3000')}`);
 });
